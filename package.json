@@ -1,0 +1,14 @@
+{
+  "name": "pens",
+  "version": "1.0.0",
+  "description": "calculate pens",
+  "main": "index.cjs",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "pens"
+  ],
+  "author": "Konstantin Lukyanenok",
+  "license": "ISC"
+}
