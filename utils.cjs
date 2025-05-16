@@ -1,4 +1,3 @@
-const assert = require('node:assert/strict');
 const fs = require('fs');
 
 function readData(fileName) {
@@ -44,44 +43,6 @@ function getAmountOfMounthBetweenDates(date1, date2) { // високосный �
 
   return years * 12 + mounth;
 }
-
-/* Tests
-const d11 = new Date('2025-12-11');
-const d12 = new Date('2025-12-10');
-assert.equal(getAmountOfMounthBetweenDates(d11, d12), 0);
-
-const d21 = new Date('2025-12-11');
-const d22 = new Date('2025-12-11');
-assert.equal(getAmountOfMounthBetweenDates(d21, d22), 0);
-
-const d31 = new Date('2025-12-10');
-const d32 = new Date('2025-12-11');
-assert.equal(getAmountOfMounthBetweenDates(d31, d32), 0);
-
-const d41 = new Date('2025-11-10');
-const d42 = new Date('2025-12-10');
-assert.equal(getAmountOfMounthBetweenDates(d41, d42), 1);
-
-const d51 = new Date('2025-11-10');
-const d52 = new Date('2025-12-09');
-assert.equal(getAmountOfMounthBetweenDates(d51, d52), 0);
-
-const d61 = new Date('2025-11-10');
-const d62 = new Date('2026-11-09');
-assert.equal(getAmountOfMounthBetweenDates(d61, d62), 11);
-
-const d71 = new Date('2025-11-10');
-const d72 = new Date('2026-11-10');
-assert.equal(getAmountOfMounthBetweenDates(d71, d72), 12);
-
-const d81 = new Date('2025-05-12');
-const d82 = new Date('2040-01-01');
-assert.equal(getAmountOfMounthBetweenDates(d81, d82), 175);
-
-const d91 = new Date('2040-01-01');
-const d92 = new Date('2055-01-01');
-assert.equal(getAmountOfMounthBetweenDates(d91, d92), 180);
-*/
 
 function getNormalisedData(data) {
   return {
