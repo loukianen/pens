@@ -65,16 +65,31 @@ function getIndexedSum(sum, index, period) {
   return Math.floor(res);
 }
 
-function forHowManyMonthWillBeEnoughMoney(inputData, additionalContribution) {
-  let capital = data.startSum;
-  let contribution = additionalContribution;
-  let payout = Math.floor(getAmountOfMonthBetweenDates(data.dateOfCalc, dateOfRetirement) / 12) ;
-  return 2;
+function getAverageRate(data, monthToRetairment) {
+  const joinRates = (coefA, coefC) => data.portfelGrowthRate * coefA + data.conservativePortfelGrowthRate * coefC;
+
+  if (monthToRetairment <= 0) {
+    return joinRates(0, 1);
+  } else if (monthToRetairment <= 12) {
+    return joinRates(0.1, 0.9);
+  } else if (monthToRetairment <= 2 * 12) {
+    return joinRates(0.2, 0.8);
+  } else if (monthToRetairment <= 3 * 12) {
+    return joinRates(0.3, 0.7);
+  } else if (monthToRetairment <= 4 * 12) {
+    return joinRates(0.4, 0.6);
+  } else if (monthToRetairment <= 5 * 12) {
+    return joinRates(0.5, 0.5);
+  } else if (monthToRetairment <= 6 * 12) {
+    return joinRates(0.6, 0.4);
+  } else {
+    return joinRates(0.7, 0.3);
+  }
 }
 
 const utils = {
-  forHowManyMonthWillBeEnoughMoney: forHowManyMonthWillBeEnoughMoney,
   getAmountOfMonthBetweenDates: getAmountOfMonthBetweenDates,
+  getAverageRate: getAverageRate,
   getIndexedSum: getIndexedSum,
   getNormalisedData: getNormalisedData,
   readData: readData,
