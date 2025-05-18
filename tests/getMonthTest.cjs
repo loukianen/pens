@@ -1,7 +1,7 @@
 const utils = require('../utils.cjs');
 const assert = require('node:assert/strict');
 
-const func = utils.getAmountOfMounthBetweenDates;
+const func = utils.getAmountOfMonthBetweenDates;
 
 const d11 = new Date('2025-12-11');
 const d12 = new Date('2025-12-10');
@@ -38,3 +38,5 @@ assert.equal(func(d81, d82), 175);
 const d91 = new Date('2040-01-01');
 const d92 = new Date('2055-01-01');
 assert.equal(func(d91, d92), 180);
+
+console.log('\x1b[32m', 'getMonthTest successfully passed \n', '\x1b[0m');

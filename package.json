@@ -4,7 +4,7 @@
   "description": "calculate pens",
   "main": "index.cjs",
   "scripts": {
-    "test": "test"
+    "test": "node ./tests/testList.cjs" 
   },
   "keywords": [
     "pens"

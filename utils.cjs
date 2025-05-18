@@ -16,7 +16,7 @@ function splitTheDate(date) {
   }
 }
 
-function getAmountOfMounthBetweenDates(date1, date2) { // високосный год не учитывается
+function getAmountOfMonthBetweenDates(date1, date2) { // високосный год не учитывается
   const first = splitTheDate(date1);
   const second = splitTheDate(date2);
 
@@ -46,8 +46,8 @@ function getAmountOfMounthBetweenDates(date1, date2) { // високосный �
 
 function getNormalisedData(data) {
   return {
-    startSum: Number(data[0]),
-    sumToGet: Number(data[1]),
+    startSum: Number(data[0]) * 100,
+    sumToGet: Number(data[1]) * 100,
     inflationRate: Number(data[5] / 100),
     portfelGrowthRate: Number(data[6] / 100),
     conservativePortfelGrowthRate: Number(data[7] / 100),
@@ -57,8 +57,25 @@ function getNormalisedData(data) {
   }
 }
 
+function getIndexedSum(sum, index, period) {
+  let res = sum;
+  for (let i = period; i > 0; i -= 1) {
+    res += res * index;
+  }
+  return Math.floor(res);
+}
+
+function forHowManyMonthWillBeEnoughMoney(inputData, additionalContribution) {
+  let capital = data.startSum;
+  let contribution = additionalContribution;
+  let payout = Math.floor(getAmountOfMonthBetweenDates(data.dateOfCalc, dateOfRetirement) / 12) ;
+  return 2;
+}
+
 const utils = {
-  getAmountOfMounthBetweenDates: getAmountOfMounthBetweenDates,
+  forHowManyMonthWillBeEnoughMoney: forHowManyMonthWillBeEnoughMoney,
+  getAmountOfMonthBetweenDates: getAmountOfMonthBetweenDates,
+  getIndexedSum: getIndexedSum,
   getNormalisedData: getNormalisedData,
   readData: readData,
 };
