@@ -87,9 +87,22 @@ function getAverageRate(data, monthToRetairment) {
   }
 }
 
+function getAverageSum(sum, addSum, iter) {
+  let res = 0;
+
+  for (let i = 1; i <= iter; i += 1) {
+    res += sum + i * addSum;
+  }
+  
+  return Math.round(res / 12);
+}
+
+
+
 const utils = {
   getAmountOfMonthBetweenDates: getAmountOfMonthBetweenDates,
   getAverageRate: getAverageRate,
+  getAverageSum: getAverageSum,
   getIndexedSum: getIndexedSum,
   getNormalisedData: getNormalisedData,
   readData: readData,
