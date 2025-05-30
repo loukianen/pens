@@ -1,4 +1,5 @@
 const utils = require('./utils.cjs');
+const consts = require('./const.cjs');
 const getForHowManyMonthWillBeEnoughMoney = require('./getForHowManyMonthWillBeEnoughMoney.cjs');
 const searchInvalidData = require('./searchInvalidData.cjs');
 
@@ -10,27 +11,27 @@ if (invalidData) {
   throw new Error(invalidData);
 }
 
-// const monthOfPayout = utils.getAmountOfMonthBetweenDates(nData.dateOfRetirement, nData.dateOfFinish);
-// let curMounthOfPayout = getForHowManyMonthWillBeEnoughMoney(nData, 700000);
-// console.log(curMounthOfPayout, monthOfPayout);
-/*
+const monthOfPayout = utils.getAmountOfMonthBetweenDates(nData.dateOfRetirement, nData.dateOfFinish);
+
 let minContribution = 0;
-let maxContribution = Number.MAX_SAFE_INTEGER;
-while (minSumPayout < maxSumPayout) {
-  const averageSum = Math.round((minSumPayout + maxSumPayout) / 2);
+let maxContribution = consts.MAX_CONTRIBUTION;
+while (minContribution < maxContribution) {
+  const averageSum = Math.round((minContribution + maxContribution) / 2);
   console.log('averageSum: ', averageSum);
-  curMounthOfPayout = getForHowManyMonthWillBeEnoughMoney(nData, averageSum);
-  console.log('curMounthOfPayout: ', curMounthOfPayout);
+  const curMounthOfPayout = getForHowManyMonthWillBeEnoughMoney(nData, averageSum);
+  console.log('curMounthOfPayout: ', curMounthOfPayout, 'monthOfPayout: ', monthOfPayout);
   if (curMounthOfPayout > monthOfPayout) {
-    minSumPayout = averageSum;
+    maxContribution = averageSum;
   } else {
-    maxSumPayout = averageSum;
+    minContribution = averageSum;
   }
-  // minSumPayout = maxSumPayout;
+  if (curMounthOfPayout - monthOfPayout === 0 || curMounthOfPayout - monthOfPayout === 1) {
+    break;
+  }
 }
 
-console.log(`Inputing conditions will permit recieve en equal ${minSumPayout / 100} until ${nData.dateOfFinish.toLocaleDateString()}`);
-return minSumPayout / 100;
-*/
-// const month = getForHowManyMonthWillBeEnoughMoney(nData, 700000);
-// console.log(`Money will be enough for ${monthOfPayout} month`);
+console.log('\x1b[33m', '\n');
+console.log(`Current conditions will permit to recieve every month en equal ${(minContribution / 100).toLocaleString('ru-RU', { style: "currency", currency: "RUR" })}
+until ${nData.dateOfFinish.toLocaleDateString()}`);
+console.log('\n', '\x1b[0m');
+return minContribution / 100;

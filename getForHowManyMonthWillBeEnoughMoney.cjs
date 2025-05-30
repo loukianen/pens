@@ -29,9 +29,9 @@ function getForHowManyMonthWillBeEnoughMoney(inputData, additionalContribution) 
   let passedMonthOfPayout = 0;
   const monthToStopPayout = utils.getAmountOfMonthBetweenDates(inputData.dateOfRetirement, inputData.dateOfFinish);
   while (payout <= capital) {
-    if (passedMonthOfPayout >= monthToStopPayout) {
-      return monthToStopPayout;
-    }
+    // if (passedMonthOfPayout >= monthToStopPayout) {
+    //   return monthToStopPayout;
+    // }
     passedMonthOfPayout += 1;
     capital -= payout;
     capitalInCurYearGrows += capital;

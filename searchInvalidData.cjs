@@ -1,3 +1,5 @@
+const consts = require('./const.cjs');
+
 const commonText = 'Please, check your data!\nThe app have limits for input data:\n  -';
 const textAboutStartSum = 'Start sum: $$$. It should not be smaller zero';
 const textAboutSumToGet = 'Payout sum: $$$. It should be 0 < sum < 10 000 000';
@@ -27,34 +29,34 @@ function searchInvalidData(data) {
     errorsTextArr.push(errorText);
   }
 
-  if (sumToGet < 0 || sumToGet > 1000000000) {
+  if (sumToGet < 0 || sumToGet > consts.MAX_CONTRIBUTION) {
     const errorText = makeErrorText(textAboutSumToGet, sumToGet / 100);
     errorsTextArr.push(errorText);
   }
 
-  if (inflationRate < -10 || inflationRate > 10) {
+  if (inflationRate < -1 * consts.MAX_RATE || inflationRate > consts.MAX_RATE) {
     const errorText = makeErrorText(textAboutInflation, inflationRate * 100);
     errorsTextArr.push(errorText);
   }
   
-  if (portfelGrowthRate < -10 || portfelGrowthRate > 10) {
+  if (portfelGrowthRate < -1 * consts.MAX_RATE || portfelGrowthRate > consts.MAX_RATE) {
     const errorText = makeErrorText(textAboutGrowRate, portfelGrowthRate * 100);
     errorsTextArr.push(errorText);
   }
   
-  if (conservativePortfelGrowthRate < -10 || conservativePortfelGrowthRate > 10) {
+  if (conservativePortfelGrowthRate < -1 * consts.MAX_RATE || conservativePortfelGrowthRate > consts.MAX_RATE) {
     const errorText = makeErrorText(textAboutConservativeRate, conservativePortfelGrowthRate * 100);
     errorsTextArr.push(errorText);
   }
 
   const activePeriod = dateOfRetirement.getFullYear() - dateOfCalc.getFullYear()
-  if ( activePeriod < 0 || activePeriod > 100) {
+  if ( activePeriod < 0 || activePeriod > consts.MAX_PERIOD) {
     const errorText = makeErrorText(textAboutActivePeriod, activePeriod);
     errorsTextArr.push(errorText);
   }
 
   const peyoutPeriod = dateOfFinish.getFullYear() - dateOfRetirement.getFullYear()
-  if ( peyoutPeriod < 0 || peyoutPeriod > 100) {
+  if ( peyoutPeriod < 0 || peyoutPeriod > consts.MAX_PERIOD) {
     const errorText = makeErrorText(textAboutPayoutPeriod, peyoutPeriod);
     errorsTextArr.push(errorText);
   }
