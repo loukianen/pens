@@ -1,8 +1,8 @@
-0 / начальная сумма
-30000 / сумма, желаемая к получению на текущий момент
-2025-05-27 / дата расчета
-2040-01-01 / дата выхода на пенсию
-2055-01-01 / дата окончания расходования пенсионных средств
-4.0 / рассчетная инфляция, %
-16.0 / рассчетный рост индекса ММВБ, %
-8.0 / рассчетная доходность консервативной части портфеля 
+0 / initial amount
+30000 / the amount desired to be received at the current moment
+2025-05-27 / calculation date
+2040-01-01 / retirement date
+2055-01-01 / end date of spending of pension funds
+4.0 / estimated inflation, %
+16.0 / MICEX Index Estimated Growth, %
+8.0 / Estimated return on the conservative portion of the portfolio

@@ -1,7 +1,6 @@
-const utils = require('./utils.cjs');
-const consts = require('./const.cjs');
-const getForHowManyMonthWillBeEnoughMoney = require('./getForHowManyMonthWillBeEnoughMoney.cjs');
+const getContriburtion = require('./getContribution.cjs');
 const searchInvalidData = require('./searchInvalidData.cjs');
+const utils = require('./utils.cjs');
 
 const nData = utils.getNormalisedData(utils.readData('input.txt'));
 
@@ -11,27 +10,15 @@ if (invalidData) {
   throw new Error(invalidData);
 }
 
-const monthOfPayout = utils.getAmountOfMonthBetweenDates(nData.dateOfRetirement, nData.dateOfFinish);
+const contribution = getContriburtion(nData);
 
-let minContribution = 0;
-let maxContribution = consts.MAX_CONTRIBUTION;
-while (minContribution < maxContribution) {
-  const averageSum = Math.round((minContribution + maxContribution) / 2);
-  console.log('averageSum: ', averageSum);
-  const curMounthOfPayout = getForHowManyMonthWillBeEnoughMoney(nData, averageSum);
-  console.log('curMounthOfPayout: ', curMounthOfPayout, 'monthOfPayout: ', monthOfPayout);
-  if (curMounthOfPayout > monthOfPayout) {
-    maxContribution = averageSum;
-  } else {
-    minContribution = averageSum;
-  }
-  if (curMounthOfPayout - monthOfPayout === 0 || curMounthOfPayout - monthOfPayout === 1) {
-    break;
-  }
-}
+const contributionText = utils.formatSum(contribution);
+const payoutText = utils.formatSum(nData.sumToGet / 100);
+const yearOfCalcText = nData.dateOfCalc.getFullYear();
+const dateOfRetirement = nData.dateOfRetirement.toLocaleDateString('ru-RU');
+const dateOfFinish = nData.dateOfFinish.toLocaleDateString('ru-RU');
 
 console.log('\x1b[33m', '\n');
-console.log(`Current conditions will permit to recieve every month en equal ${(minContribution / 100).toLocaleString('ru-RU', { style: "currency", currency: "RUR" })}
-until ${nData.dateOfFinish.toLocaleDateString()}`);
+console.log(`For receive every month from ${dateOfRetirement} until ${dateOfFinish} sum which was equal ${payoutText} at ${yearOfCalcText}
+you should make every month contribution ${contributionText}`);
 console.log('\n', '\x1b[0m');
-return minContribution / 100;

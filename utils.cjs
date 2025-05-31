@@ -97,9 +97,12 @@ function getAverageSum(sum, addSum, iter) {
   return Math.round(res / 12);
 }
 
-
+function formatSum(sum) {
+  return sum.toLocaleString('ru-RU', { style: "currency", currency: "RUB" });
+}
 
 const utils = {
+  formatSum: formatSum,
   getAmountOfMonthBetweenDates: getAmountOfMonthBetweenDates,
   getAverageRate: getAverageRate,
   getAverageSum: getAverageSum,

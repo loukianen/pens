@@ -1,8 +1,6 @@
-Программа считает какие взносы надо делать ежемесячно, чтобы суммы хватило на планируемый срок
-Данные берутся из файла intut.txt. В нем есть пояснения к данным. Внутри программы суммы хранятся в копейках.
+The program calculates what contributions need to be made monthly so that the amount will be enough for the planned period
+The data is taken from the intut.txt file. It contains explanations for the data. The amounts are stored in kopecks inside the program.
 
-
-Предполагается, что ежемесячно с даты рассчета будут делаться взносы в собственный пенсионный
-фонд на ИИС до даты выхода на пенсию. Затем средства будут расходоваться в желаемой сумме, скорректированной 
-на инфляцию. Портфель будет состоять из акций/облигаций в начале 70/30, в последние 7 лет баланс меняется в
-сторону консервативных инструментов.
+It is assumed that contributions will be made monthly from the calculation date to your own pension
+fund on the IIS until the retirement date. Then the funds will be spent in the desired amount, adjusted for inflation.
+The portfolio will consist of shares/bonds at the beginning 70/30, in the last 7 years the balance has changed in favor of conservative instruments.
